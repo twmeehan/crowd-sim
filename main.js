@@ -1,16 +1,15 @@
 import { Vec3, Vec4, Mat4 , WEAVE} from './lib/weave-3d.esm.js'; 
 
-let box = new WEAVE.GameObject(new Vec3(1,1,1));
-let sphere = new WEAVE.GameObject(new Vec3(0,1,0));
-box.add(sphere);
-box.transform.rotation.y += Math.PI/3;
-box.updateWorldMatrix();
+WEAVE.init();
 
+let camera = new WEAVE.Camera(WEAVE.Camera.PERSPECTIVE);
+WEAVE.setActiveCamera(camera);
 
-let cube = new WEAVE.GameObject(new Vec3(10,0,0),new Vec3(Math.PI/4,0,0),new Vec3(2,2,2));
-cube.add(box);
+let scene = new WEAVE.Scene();
+WEAVE.setActiveScene(scene);
 
+let box = new WEAVE.Box();
+scene.add(box);
 
-cube.updateWorldMatrix();
+WEAVE.render();
 
-console.log(sphere.getWorldMatrix().toString());
