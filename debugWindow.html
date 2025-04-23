@@ -1,0 +1,83 @@
+<html>
+    <head>
+        <title>WEAVE Debug</title>
+        <style>
+            
+
+        body {
+            background-color: white;
+            color: #000;
+            font-family: monospace;
+            font-size: 12px;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+
+        #hierarchy {
+            max-height: 360px;
+            overflow-y: auto;
+            flex: 1;
+            border-bottom: 1px solid #ccc;
+            padding: 4px 10px;
+        }
+
+        .node {
+            display: flex;
+            align-items: center;
+            margin: 0;
+            padding: 0;
+            gap: 5px;
+            border-bottom: 1px solid #eee;
+            padding-left: 20px;
+
+        }
+
+        #status-dock {
+            padding: 8px 10px;
+            background-color: #eee;
+            border-top: 1px solid #ccc;
+            display: flex;
+            gap: 20px;
+            justify-content: flex-start;
+        }
+        </style>
+    </head>
+        <body>
+            <script> document.addEventListener("keydown", e => {
+                if (e.key === "d") {
+                    this.close();
+                }
+            });</script>
+            <div id="hierarchy">
+                <div class="node" style="padding-left: 0px;"> -<input type="checkbox" checked> Scene </div>
+                <div class="node" style="padding-left: 20px;"> -<input type="checkbox" checked> OBJ1 </div>
+                <div class="node" style="padding-left: 40px;"> -<input type="checkbox" checked> OBJ2 </div>
+                <div class="node" style="padding-left: 20px;"> -<input type="checkbox" checked> OBJ3 </div>
+                <div class="node" style="padding-left: 20px;"> -<input type="checkbox" checked> OBJ4 </div>
+                <div class="node" style="padding-left: 40px;"> -<input type="checkbox" checked> OBJ5 </div>
+                <div class="node" style="padding-left: 60px;"> -<input type="checkbox" checked> OBJ6 </div>
+                <div class="node" style="padding-left: 0px;"> -<input type="checkbox" checked> Scene </div>
+                <div class="node" style="padding-left: 20px;"> -<input type="checkbox" checked> OBJ1 </div>
+                <div class="node" style="padding-left: 40px;"> -<input type="checkbox" checked> OBJ2 </div>
+                <div class="node" style="padding-left: 20px;"> -<input type="checkbox" checked> OBJ3 </div>
+                <div class="node" style="padding-left: 20px;"> -<input type="checkbox" checked> OBJ4 </div>
+                <div class="node" style="padding-left: 40px;"> -<input type="checkbox" checked> OBJ5 </div>
+                <div class="node" style="padding-left: 60px;"> -<input type="checkbox" checked> OBJ6 </div>
+                <div class="node" style="padding-left: 0px;"> -<input type="checkbox" checked> Scene </div>
+                <div class="node" style="padding-left: 20px;"> -<input type="checkbox" checked> OBJ1 </div>
+                <div class="node" style="padding-left: 40px;"> -<input type="checkbox" checked> OBJ2 </div>
+                <div class="node" style="padding-left: 20px;"> -<input type="checkbox" checked> OBJ3 </div>
+                <div class="node" style="padding-left: 20px;"> -<input type="checkbox" checked> OBJ4 </div>
+                <div class="node" style="padding-left: 40px;"> -<input type="checkbox" checked> OBJ5 </div>
+                <div class="node" style="padding-left: 60px;"> -<input type="checkbox" checked> OBJ6 </div>
+            </div>
+            <div id="status-dock">
+                <div id="fps">FPS: --</div>
+                <div id="drawcalls">Draw Calls: --</div>
+                <!-- Add more debug info as needed -->
+            </div>
+        </body>
+</html>

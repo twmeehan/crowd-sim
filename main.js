@@ -15,16 +15,16 @@ let camera = new WEAVE.Camera(WEAVE.Camera.PERSPECTIVE);
 WEAVE.setActiveCamera(camera);
 
 let earth = new WEAVE.Sphere();
+earth.name ="earth";
 earth.mesh.color = new Vec4(0,0,1,0.5);
-let c = [];
 earth.update = () => {
-    c.push(performance.now())
-    console.log(performance.now() - c[c.length-2])
+    
     earth.transform.position = new Vec3(Math.sin(Date.now()/1000)*10,0,Math.cos(Date.now()/1000) * 7);
     earth.dirty = true;
 };
 
 let moon = new WEAVE.Sphere();
+moon.name ="moon";
 moon.transform.scale = new Vec3(0.3,0.3,0.3);
 moon.mesh.color = new Vec4(1,1,1,0.8);
 moon.update = () => {
@@ -36,13 +36,19 @@ earth.add(moon);
 let sun = new WEAVE.Box();
 sun.mesh.color = new Vec4(1,1,0,0.5);
 
-camera.update = () => {
-    camera.transform.position = new Vec3(1 * 20,0*15,0* 20);
-    camera.lookAt(new Vec3(0,0,0));
-    camera.dirty = true;
-};
+camera.transform.position = new Vec3(Math.sin(Date.now()/5000) * 20,Math.cos(Date.now()/5000)*15,Math.cos(Date.now()/5000)* 20);
+camera.lookAt(new Vec3(0,0,0));
+camera.dirty = true;
 
 WEAVE.start();
+
+document.addEventListener("keydown", e => {
+    if (e.key === "d") {
+      WEAVE.toggleDebugWindow(WEAVE.scene);
+    }
+  });
+
+
 
 
 
