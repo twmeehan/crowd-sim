@@ -14,27 +14,12 @@ WEAVE.setActiveScene(scene);
 let camera = new WEAVE.Camera(WEAVE.Camera.PERSPECTIVE);
 WEAVE.setActiveCamera(camera);
 
-let earth = new WEAVE.Sphere();
-earth.name ="earth";
-earth.mesh.color = new Vec4(0,0,1,0.5);
-earth.update = () => {
-    
-    earth.position = new Vec3(Math.sin(Date.now()/1000)*10,0,Math.cos(Date.now()/1000) * 7);
-    earth.dirty = true;
-};
+let sunLight = new WEAVE.DirectionalLight(new Vec3(-1,-1,-1),new Vec3(1,1,1),1);
+WEAVE.lights.push(sunLight);
 
-let moon = new WEAVE.Sphere();
-moon.name ="moon";
-moon.scale = new Vec3(0.3,0.3,0.3);
-moon.mesh.color = new Vec4(1,1,1,0.8);
-moon.update = () => {
-    moon.position = new Vec3(Math.sin(Date.now()/300) * 2,0,Math.cos(Date.now()/300) *2);
-    moon.dirty = true;
-};
-earth.add(moon);
 
 let sun = new WEAVE.Box();
-sun.mesh.color = new Vec4(1,1,0,0.5);
+sun.mesh.material = new WEAVE.Material(new Vec3(0,1,1),new Vec3(1,1,0),1)
 
 camera.update = () => {
     camera.position = new Vec3(Math.sin(Date.now()/5000) * 20,Math.cos(Date.now()/5000)*15,Math.cos(Date.now()/5000)* 20);
