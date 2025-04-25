@@ -14,15 +14,20 @@ WEAVE.setActiveScene(scene);
 let camera = new WEAVE.Camera(WEAVE.Camera.PERSPECTIVE);
 WEAVE.setActiveCamera(camera);
 
-let sunLight = new WEAVE.DirectionalLight(new Vec3(-1,-1,-1),new Vec3(1,1,1),1);
+let sunLight = new WEAVE.DirectionalLight(new Vec3(-1,-1.3,-0.8),new Vec3(1,1,1),1);
 WEAVE.lights.push(sunLight);
 
 
-let sun = new WEAVE.Box();
-sun.mesh.material = new WEAVE.Material(new Vec3(0,1,1),new Vec3(1,1,0),1)
+let sun = new WEAVE.Sphere();
+sun.update = () => {
+    //sun.position = new Vec3(0,Math.cos(Date.now()/1000)*3,0);
+    sun.dirty = true;
+}
+
+sun.mesh.material = new WEAVE.Material(new Vec3(0,1,1),new Vec3(0.5,1,1),10)
 
 camera.update = () => {
-    camera.position = new Vec3(Math.sin(Date.now()/5000) * 20,Math.cos(Date.now()/5000)*15,Math.cos(Date.now()/5000)* 20);
+camera.position = new Vec3(Math.sin(Date.now()/1000) * 20,Math.cos(Date.now()/1000)*15,Math.cos(Date.now()/1000)* 20);
     camera.lookAt(new Vec3(0,0,0));
     camera.dirty = true;
 }
